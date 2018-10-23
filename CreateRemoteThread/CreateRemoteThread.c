@@ -1,5 +1,5 @@
-#include "stdio.h"
-#include "windows.h"
+#include <stdio.h>
+#include <windows.h>
 
 int main(int argc, char *argv[]) {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
 
@@ -52,8 +52,7 @@ int main(int argc, char *argv[]) {
 			return 1;
 		}
 
-		puts("[*] Create Remote Thread...!");
-		puts("[*] Success DLL Injection...!"); 
+		puts("[*] Success DLL Injection"); 
 
 		WaitForSingleObject(hThread, INFINITE);
 
