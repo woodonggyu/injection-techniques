@@ -20,7 +20,7 @@ typedef DWORD(WINAPI *PFNTCREATETHREADEX) (
 int set_privileges(void) {
 
 	TOKEN_PRIVILEGES tPriv	= { 0 };
-	HANDLE hToken			= NULL;
+	HANDLE hToken	= NULL;
 	
 	LUID luid = { 0 };
 
