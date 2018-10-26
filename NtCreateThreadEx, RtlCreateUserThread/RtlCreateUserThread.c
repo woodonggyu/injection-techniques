@@ -10,12 +10,12 @@ typedef struct _CLIENT_ID {
 
 typedef DWORD(WINAPI *PFRtlCreateUserThread) (
 	HANDLE					ProcessHandle,
-	PSECURITY_DESCRIPTOR	SecurityDescriptor,
+	PSECURITY_DESCRIPTOR		SecurityDescriptor,
 	BOOLEAN					CreateSuspended,
 	ULONG					StackZeroBits,
 	PULONG					StackReserve,
 	PULONG					StackCommit,
-	PTHREAD_START_ROUTINE	StartAddress,
+	PTHREAD_START_ROUTINE		StartAddress,
 	PVOID					Parameter,
 	PHANDLE					ThreadHandle,
 	PCLIENT_ID				ClientId
@@ -47,7 +47,7 @@ int set_privileges(void) {
 
 int main(int argc, char *argv[]) {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
 
-	DWORD dwPID				= NULL;
+	DWORD dwPID			= NULL;
 
 	LPCSTR szDLL			= NULL;
 	LPVOID pRemoteAddr		= NULL;	
