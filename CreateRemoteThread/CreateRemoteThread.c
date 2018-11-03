@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
 
 	if(argc < 2) {
 		printf("[+] usage: Injects.exe [PID] [PATH]\n");
-		return 1;
+		return -1;
 	}
 
 	dwPID = atoi(argv[1]);
@@ -26,14 +26,14 @@ int main(int argc, char *argv[]) {
 		pRemoteAddr = VirtualAllocEx(hProcess, NULL, strlen(szDLL) + 1, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
 		if (pRemoteAddr == NULL) {
 			puts("[-] failed VirtualAllocEx function");
-			return 1;
+			return -1;
 		}
 
 		puts("[+] Initialized Memory Allocation");
 
 		if (WriteProcessMemory(hProcess, pRemoteAddr, (LPVOID)szDLL, strlen(szDLL) + 1, NULL) == 0) {
 			puts("[-] failed WriteProcessMemory function");
-			return 1;
+			return -1;
 		}
 		
 		puts("[+] Written DLL_FULL_PATH to Memory");
@@ -41,7 +41,7 @@ int main(int argc, char *argv[]) {
 		libAddr = (LPVOID)GetProcAddress(GetModuleHandleA("kernel32.dll"), "LoadLibraryA");
 		if (libAddr == NULL) {
 			puts("[-] failed GetProcAddress function");
-			return 1;
+			return -1;
 		}
 		
 		printf("[+] LoadLibraryA() Addr = 0x%p\n", libAddr);
@@ -49,10 +49,10 @@ int main(int argc, char *argv[]) {
 		hThread = CreateRemoteThread(hProcess, NULL, NULL, (LPTHREAD_START_ROUTINE)libAddr, pRemoteAddr, 0, NULL);
 		if (hThread == NULL) {
 			puts("failed CreateRemoteThread function");
-			return 1;
+			return -1;
 		}
 
-		puts("[*] Success DLL Injection"); 
+		puts("[*] Success DLL Injection...!"); 
 
 		WaitForSingleObject(hThread, INFINITE);
 

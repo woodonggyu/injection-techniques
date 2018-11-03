@@ -10,12 +10,12 @@ typedef struct _CLIENT_ID {
 
 typedef DWORD(WINAPI *PFRtlCreateUserThread) (
 	HANDLE					ProcessHandle,
-	PSECURITY_DESCRIPTOR		SecurityDescriptor,
+	PSECURITY_DESCRIPTOR	SecurityDescriptor,
 	BOOLEAN					CreateSuspended,
 	ULONG					StackZeroBits,
 	PULONG					StackReserve,
 	PULONG					StackCommit,
-	PTHREAD_START_ROUTINE		StartAddress,
+	PTHREAD_START_ROUTINE	StartAddress,
 	PVOID					Parameter,
 	PHANDLE					ThreadHandle,
 	PCLIENT_ID				ClientId
@@ -63,7 +63,7 @@ int main(int argc, char *argv[]) {
 
 	if(argc < 2) {
 		printf("[+] usage: Injects.exe [PID] [PATH]\n");
-		return 1;
+		return -1;
 	}
 
 	dwPID = atoi(argv[1]);

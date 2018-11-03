@@ -19,8 +19,8 @@ typedef DWORD(WINAPI *PFNTCREATETHREADEX) (
 
 int set_privileges(void) {
 
-	TOKEN_PRIVILEGES tPriv	= { 0 };
-	HANDLE hToken	= NULL;
+	TOKEN_PRIVILEGES tPriv = { 0 };
+	HANDLE hToken = NULL;
 	
 	LUID luid = { 0 };
 
@@ -43,7 +43,7 @@ int set_privileges(void) {
 
 int main(int argc, char *argv[]) {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
 
-	DWORD dwPID			= NULL;
+	DWORD dwPID				= NULL;
 
 	LPCSTR szDLL			= NULL;
 	LPVOID pRemoteAddr		= NULL;	
@@ -57,7 +57,7 @@ int main(int argc, char *argv[]) {
 
 	if(argc < 2) {
 		printf("[+] usage: Injects.exe [PID] [PATH]\n");
-		return 1;
+		return -1;
 	}
 
 	dwPID = atoi(argv[1]);
